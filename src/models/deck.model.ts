@@ -3,7 +3,7 @@ import { model, Schema, Types } from "mongoose";
 
 const deckSchema = new Schema<IDeck>({
   userId: {
-    type: String,
+    type: Types.ObjectId,
     required: true,
     ref: "Users",
   },
@@ -21,6 +21,10 @@ const deckSchema = new Schema<IDeck>({
   language: {
     type: String,
     required: true,
+  },
+  cards: {
+    type: [String],
+    ref: "Cards",
   },
 });
 

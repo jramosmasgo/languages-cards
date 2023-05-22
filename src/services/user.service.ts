@@ -23,14 +23,14 @@ export const createUserService = async (user: IUser): Promise<IUser> => {
 
 export const UpdateUserService = async (user: IUser): Promise<IUser> => {
   try {
-    const newUser = await UserModel.findOneAndUpdate(
-      { id: user.id },
-      { user },
+    const newUser = await UserModel.findByIdAndUpdate(
+      user._id,
+      { ...user },
       { new: true }
     );
 
     if (!newUser) {
-      throw new Error("Error");
+      throw new Error("User not found");
     }
 
     return newUser;

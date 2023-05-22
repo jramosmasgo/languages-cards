@@ -7,5 +7,5 @@ export const errorMiddleware = (
   res: Response,
   _next: NextFunction
 ) => {
-  new ApplicationResponse(res).sendError(res, err.statusCode ?? 500);
+  new ApplicationResponse(res).sendError(err, err.statusCode ?? 500);
 };
