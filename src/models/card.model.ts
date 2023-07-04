@@ -1,10 +1,15 @@
 import { ICard } from "@interfaces/card.interface";
-import { model, Schema } from "mongoose";
+import { model, Schema, Types } from "mongoose";
 
 const CardSchema = new Schema<ICard>({
   title: {
     type: String,
     required: true,
+  },
+  userId: {
+    type: Types.ObjectId,
+    required: true,
+    ref: "Users",
   },
   back: {
     type: String,
@@ -12,10 +17,6 @@ const CardSchema = new Schema<ICard>({
   },
   imageUrl: {
     type: String,
-  },
-  tags: {
-    type: [String],
-    ref: "Tags",
   },
   examples: {
     type: [String],
